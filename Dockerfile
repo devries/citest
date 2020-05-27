@@ -1,0 +1,22 @@
+FROM python:3.8-slim as base
+
+RUN pip install "poetry==1.0.5"
+
+WORKDIR /code
+COPY poetry.lock pyproject.toml /code/
+
+RUN poetry install --no-interaction --no-ansi --no-root
+
+COPY . /code
+
+# Run test suite
+RUN cd /code && poetry run pytest && poetry run safety check
+
+# Build
+RUN cd /code && poetry build && pip install dist/*.whl
+
+FROM python:3.8-slim
+COPY --from=base /code/dist /dist
+RUN pip install /dist/*.whl
+
+CMD ["cit"]
