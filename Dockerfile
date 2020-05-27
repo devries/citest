@@ -15,8 +15,9 @@ RUN cd /code && poetry run pytest && poetry run safety check
 # Build
 RUN cd /code && poetry build
 
-FROM python:3.8-slim
-COPY --from=base /code/dist /dist
-RUN pip install /dist/*.whl
-
-CMD ["cit"]
+# Deploy in a container
+# FROM python:3.8-slim
+# COPY --from=base /code/dist /dist
+# RUN pip install /dist/*.whl
+#
+# CMD ["cit"]
