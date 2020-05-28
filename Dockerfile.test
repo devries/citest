@@ -14,11 +14,3 @@ RUN cd /code && poetry run pytest && poetry run safety check
 
 # Build
 RUN cd /code && poetry build
-
-# Deploy in a container
-FROM python:3.8-alpine3.11
-COPY --from=base /code/dist /dist
-RUN pip install /dist/*.whl
-
-RUN /bin/rm -rf /dist
-CMD ["cit"]
