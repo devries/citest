@@ -1,4 +1,6 @@
 # citest
+![CI](https://github.com/devries/citest/workflows/CI/badge.svg?branch=master)
+
 A test of CI tools w/ poetry
 
 Essentially this project can be tested and validated for package vulnerabilities using the following sequence:
