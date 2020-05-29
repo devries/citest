@@ -8,7 +8,4 @@ test:
   script:
     - poetry run pytest
     - poetry run safety check
-
-lint:
-  script:
     - poetry run pylint citest
