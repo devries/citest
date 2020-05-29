@@ -12,5 +12,8 @@ COPY . /code
 # Run test suite
 RUN cd /code && poetry run pytest && poetry run safety check
 
+# Run the linter (CI only)
+RUN cd /code && poetry run pylint citest
+
 # Build
 RUN cd /code && poetry build

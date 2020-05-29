@@ -22,7 +22,10 @@ jobs:
         pip install -U pip
         pip install poetry==1.0.5
         poetry install
-      
+
+    - name: Run linter
+      run: poetry run pylint citest
+
     - name: Run tests
       run: poetry run pytest
 
