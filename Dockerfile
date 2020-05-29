@@ -10,10 +10,10 @@ RUN poetry install --no-interaction --no-ansi --no-root
 COPY . /code
 
 # Run test suite
-RUN cd /code && poetry run pytest && poetry run safety check
+RUN poetry run pytest && poetry run safety check
 
 # Build
-RUN cd /code && poetry build
+RUN poetry build
 
 # Deploy in a container
 FROM python:3.8-alpine3.11
