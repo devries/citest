@@ -16,7 +16,7 @@ ci: lint test safety
 
 clean:
 	rm -rf dist
-	rm -rf citest.egg-info
+	#rm -rf citest.egg-info
 
 build: ci
 	poetry build
