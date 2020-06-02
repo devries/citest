@@ -9,10 +9,11 @@ steps:
         poetry install --no-interaction --no-ansi --no-root && \
         poetry run pytest && \
         poetry run safety check && \
-        poetry run pylint citest
+        poetry run pylint citest && \
+        poetry run build
 
-#  - name: 'gcr.io/cloud-builders/docker'
-#    id: Build
-#    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/citest', '.']
-#images:
-#  - 'gcr.io/$PROJECT_ID/citest'
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/citest:$BRANCH_NAME', '.']
+images:
+  - 'gcr.io/$PROJECT_ID/citest'
