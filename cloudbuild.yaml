@@ -1,5 +1,18 @@
 steps:
+  - name: 'python:3.8-slim'
+    id: Test
+    entrypoint: /bin/sh
+    args:
+      - '-c'
+      - |
+        set -x && \
+        pip install poetry==1.0.5 && \
+        poetry install --no-ineraction --no-ansi --no-root && \
+        poetry run pytest && \
+        poetry run safety check && \
+        poetry run pylint citest
+
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/citest', '-f', 'Dockerfile.test', '.']
-#images:
-#  - 'gcr.io/$PROJECT_ID/citest'
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/citest', '.']
+images:
+  - 'gcr.io/$PROJECT_ID/citest'
