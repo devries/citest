@@ -10,7 +10,7 @@ steps:
         poetry run pytest && \
         poetry run safety check && \
         poetry run pylint citest && \
-        poetry run build
+        poetry build
 
   - name: 'gcr.io/cloud-builders/docker'
     id: Build
