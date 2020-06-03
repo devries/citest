@@ -1,5 +1,5 @@
 steps:
-  - name: 'devries/python:3.8-poetry1.0.5'
+  - name: 'gcr.io/$PROJECT_ID/python:3.8-poetry1.0.5'
     id: Test
     entrypoint: /bin/sh
     args:
@@ -16,4 +16,4 @@ steps:
     id: Build
     args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/citest:$BRANCH_NAME', '.']
 images:
-  - 'gcr.io/$PROJECT_ID/citest'
+  - 'gcr.io/$PROJECT_ID/citest:$BRANCH_NAME'
