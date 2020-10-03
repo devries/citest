@@ -28,6 +28,9 @@ build: ci ## Test and build project
 image: clean ## Test and build project in Docker image from scratch
 	docker build -t citest .
 
+run: test
+	poetry run cit
+
 help:
 	@echo "This project is a CI testing project with integration for github, gitlab, and Google source repositories.\n"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

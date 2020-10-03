@@ -17,3 +17,11 @@ gcloud builds submit --config cloudbuild.yaml .
 ```
 
 2. There is a github action in the `.github/workflows/main.yml` directory. This should run automatically.
+
+# Run the sample
+
+You can run this project using the command below:
+
+```
+poetry run cit
+```
