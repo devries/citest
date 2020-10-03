@@ -20,7 +20,7 @@ jobs:
     - name: Install poetry and dependencies
       run: |
         pip install -U pip
-        pip install poetry==1.0.5
+        pip install poetry==1.1.0
         poetry install
 
     - name: Run linter
